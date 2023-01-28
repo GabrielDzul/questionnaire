@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UpdateSurveyTables < ActiveRecord::Migration
+class UpdateSurveyTables < ActiveRecord::Migration[7.0]
   def change
     # Survey Surveys table
     add_column :survey_surveys, :locale_name, :string

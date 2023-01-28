@@ -7,7 +7,7 @@ def create_survey(opts = {})
   Survey::Survey.create({
     name: ::Faker::Name.name,
     attempts_number: 3,
-    description: ::Faker::Lorem.paragraph(1)
+    description: ::Faker::Lorem.paragraph
   }.merge(opts))
 end
 
@@ -16,14 +16,14 @@ def create_section(opts = {})
   Survey::Section.create({
     head_number: ::Faker::Name.name,
     name: ::Faker::Name.name,
-    description: ::Faker::Lorem.paragraph(1)
+    description: ::Faker::Lorem.paragraph
   }.merge(opts))
 end
 
 # Create a Survey::Question
 def create_question(opts = {})
   Survey::Question.create({
-    text: ::Faker::Lorem.paragraph(1),
+    text: ::Faker::Lorem.paragraph,
     options_attributes: { option: correct_option_attributes },
     questions_type_id: Survey::QuestionsType.multiple_choice,
     mandatory: false
@@ -39,7 +39,7 @@ end
 
 # Create a Survey::option but not saved
 def new_option(opts = {})
-  Survey::Option.new(option_attributes.merge(opts))
+  Survey::Option.new
 end
 
 # Create a Survey::Option
@@ -48,7 +48,7 @@ def create_option(opts = {})
 end
 
 def option_attributes
-  { text: ::Faker::Lorem.paragraph(1),
+  { text: ::Faker::Lorem.paragraph,
     options_type_id: Survey::OptionsType.multi_choices }
 end
 

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby '2.1.5'
+ruby '3.1.2'
 
 gem 'execjs'
-gem 'rails', '3.1'
+gem 'rails', '7.0'
 gem 'therubyracer'
 
 group :development, :test do
@@ -24,3 +24,4 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'sprockets-rails', :require => 'sprockets/railtie'

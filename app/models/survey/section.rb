@@ -7,16 +7,14 @@ class Survey::Section < ActiveRecord::Base
   has_many :questions
   belongs_to :survey
 
-  # rails 3 attr_accessible support
-  if Rails::VERSION::MAJOR < 4
-    attr_accessible :questions_attributes, :head_number, :name, :description, :survey_id, :locale_head_number, :locale_name, :locale_description
-  end
-
   accepts_nested_attributes_for :questions,
                                 reject_if: ->(q) { q[:text].blank? }, allow_destroy: true
 
   # validations
-  validates :name, presence: true, allow_blank: false
+  validates :name,
+            presence: true,
+            allow_blank: false
+
   validate  :check_questions_requirements
 
   def name

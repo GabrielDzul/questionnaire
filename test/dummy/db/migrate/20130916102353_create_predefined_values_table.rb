@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreatePredefinedValuesTable < ActiveRecord::Migration
+class CreatePredefinedValuesTable < ActiveRecord::Migration[7.0]
   def change
     create_table :survey_predefined_values do |t|
       t.string  :head_number

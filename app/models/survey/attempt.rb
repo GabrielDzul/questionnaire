@@ -4,18 +4,13 @@ class Survey::Attempt < ActiveRecord::Base
   self.table_name = 'survey_attempts'
 
   # relations
-
   has_many :answers, dependent: :destroy
   belongs_to :survey
   belongs_to :participant, polymorphic: true
 
-  # rails 3 attr_accessible support
-  if Rails::VERSION::MAJOR < 4
-    attr_accessible :participant_id, :survey_id, :answers_attributes, :survey, :winner, :participant
-  end
-
   # validations
-  validates :participant_id, :participant_type,
+  validates :participant_id,
+            :participant_type,
             presence: true
 
   accepts_nested_attributes_for :answers,

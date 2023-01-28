@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateSections < ActiveRecord::Migration
+class CreateSections < ActiveRecord::Migration[7.0]
   def self.up
     create_table :survey_sections do |t|
       t.string  :head_number

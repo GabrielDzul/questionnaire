@@ -2,12 +2,13 @@
 
 require File.expand_path('../boot', __FILE__)
 
-require 'active_model/railtie'
-require 'active_record/railtie'
-require 'action_controller/railtie'
-require 'action_view/railtie'
-require 'action_mailer/railtie'
-require 'sprockets/railtie'
+# require 'active_model/railtie'
+# require 'active_record/railtie'
+# require 'action_controller/railtie'
+# require 'action_view/railtie'
+# require 'action_mailer/railtie'
+# require 'sprockets/railtie'
+require 'rails/all'
 
 Bundler.require
 require 'survey'
@@ -39,15 +40,17 @@ module Dummy
     # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
 
     # Enable the asset pipeline
-    config.assets.enabled = true
-    # Version of your assets, change this if you want to expire all your assets
-    config.assets.version = '1.0'
-    config.assets.initialize_on_precompile = true
+    # config.assets.enabled = true
+    # # Version of your assets, change this if you want to expire all your assets
+    # config.assets.version = '1.0'
+    # config.assets.initialize_on_precompile = true
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = 'utf-8'
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    ActiveRecord.legacy_connection_handling = false
   end
 end
