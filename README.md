@@ -102,14 +102,9 @@ class ContestsController < ApplicationController
   #######
   private
   #######
-
-  # Rails 4 Strong Params
+  
   def attempt_params
-    if Rails::VERSION::MAJOR < 4
-      params[:survey_attempt]
-    else
-      params.require(:survey_attempt).permit(answers_attributes: [:id, :question_id, :option_id, :option_text, :option_number, :predefined_value_id, :_destroy, :finished])
-    end
+    params.require(:survey_attempt).permit(answers_attributes: [:id, :question_id, :option_id, :option_text, :option_number, :predefined_value_id, :_destroy, :finished])
   end
   
 end
@@ -254,16 +249,15 @@ user_highest_score  = survey_answers.for_participant(@user).high_score
 #check the highest score made for this survey
 global_highest_score = survey_answers.high_score
 ```
-# Compability 
+# Compatibility 
 ### Rails
-Survey supports Rails 3 and 4. For use in Rails 4 without using protected_attributes gem.
-Rails 4 support is recent, so some minor issues may still be present, please report them.
+Survey supports Rails 7
 
 ### Active Admin
-Only support versions of Active Admin higher than 0.3.1.
+Not tested in this fork
 
 # License
-- Modified by [Dr-Click](http://github.com/dr-click)
+- Modified by [Gabriel Dzul](http://github.com/gabrieldzul)
 - Copyright © 2013 [Runtime Revolution](http://www.runtime-revolution.com), released under the MIT license.
 - This repository was forked from the original one : https://github.com/runtimerevolution/survey
  
