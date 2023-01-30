@@ -4,7 +4,7 @@ class Survey::PredefinedValue < ActiveRecord::Base
   self.table_name = 'survey_predefined_values'
 
   # relations
-  belongs_to :question
+  belongs_to :question, optional: true
 
   # validations
   validates :name, presence: true

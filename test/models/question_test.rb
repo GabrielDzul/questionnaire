@@ -27,6 +27,13 @@ class QuestionTest < ActiveSupport::TestCase
     assert_equal question.predefined_values.count, 1
   end
 
+  test 'should create a valid question without predefined_values' do
+    question = create_question
+
+    should_be_persisted question
+    assert_empty question.predefined_values
+  end
+
   test 'should not create a question with a empty or nil questions_type_id field' do
     question = create_question(questions_type_id: nil)
 

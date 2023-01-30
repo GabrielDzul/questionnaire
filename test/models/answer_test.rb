@@ -149,6 +149,17 @@ class AnswerTest < ActiveSupport::TestCase
     should_not_be_persisted answer_try_1
   end
 
+  test 'should create an answer with an empty predefined field for single_choice type' do
+    survey, option, attempt, question = create_answer_with_option_type(Survey::OptionsType.single_choice, false)
+    # question.predefined_values << create_predefined_value
+    # question.save
+    answer_try_1 = create_answer(option: option, attempt: attempt, question: question)
+    answer_try_1.errors.full_messages.to_sentence
+
+    should_be_persisted survey
+    should_be_persisted answer_try_1
+  end
+
   test 'can create an answer already made to the same attempt' do
     answer_try_1 = create_answer
     attempt  = answer_try_1.attempt

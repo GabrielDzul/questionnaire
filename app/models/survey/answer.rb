@@ -5,7 +5,7 @@ class Survey::Answer < ActiveRecord::Base
 
   belongs_to :attempt
   belongs_to :option
-  belongs_to :predefined_value
+  belongs_to :predefined_value, optional: true
   belongs_to :question
 
   validates :option_id,
