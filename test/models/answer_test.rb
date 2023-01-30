@@ -153,7 +153,7 @@ class AnswerTest < ActiveSupport::TestCase
     survey, option, attempt, question = create_answer_with_option_type(Survey::OptionsType.single_choice, false)
     # question.predefined_values << create_predefined_value
     # question.save
-    answer_try_1 = create_answer(option: option, attempt: attempt, question: question)
+    answer_try_1 = create_answer(option: option, attempt: attempt, question: question, predefined_value_id: nil)
     answer_try_1.errors.full_messages.to_sentence
 
     should_be_persisted survey
